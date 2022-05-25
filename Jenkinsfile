@@ -1,9 +1,10 @@
 pipeline {
-    agent any
-
+    agent none
     stages {
         stage('Build') {
-            
+            agent{
+                label 'build'
+            }
             steps {
                 sh '''
                     #!/bin/bash
