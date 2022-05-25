@@ -1,5 +1,7 @@
 #!/bin/bash
 make clean
 make -f "${WORKSPACE}/Makefile"
-var="$(."${WORKSPACE}/main.exe")"
+#cd "${WORKSPACE}"
+var="$(./main.exe)"
 echo $var
+
