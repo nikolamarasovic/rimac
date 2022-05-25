@@ -2,4 +2,4 @@ main: main.c
 	gcc -o main main.c
 
 clean:
-	rm *.o main
+	rm *.exe main
