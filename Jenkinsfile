@@ -3,9 +3,7 @@ pipeline {
 
     stages {
         stage('Build') {
-            agent { 
-                label 'build'
-            }
+            
             steps {
                 sh '''
                     #!/bin/bash
