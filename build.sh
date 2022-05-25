@@ -4,7 +4,7 @@ make -f "${WORKSPACE}/Makefile"
 #cd "${WORKSPACE}"
 var="$(./main.exe)"
 echo $var
-if $var =~ "FAILED"; then
+if [[ $var =~ "FAILED" ]]; then
   echo "Build is unstable"
   exit 1
 fi
