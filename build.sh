@@ -1,7 +1,7 @@
 #!/bin/bash
 make clean
 #make -f "${WORKSPACE}/Makefile"
-make build
+make main
 #cd "${WORKSPACE}"
 var="$(./main.exe)"
 echo $var
