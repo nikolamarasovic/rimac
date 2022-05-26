@@ -1,5 +1,4 @@
 properties([pipelineTriggers([githubPush()])])
-
 pipeline {
     agent none
     stages {      
