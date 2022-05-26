@@ -1,5 +1,6 @@
 #!/bin/bash
 echo "testing webhook"
+
 make clean
 #make -f "${WORKSPACE}/Makefile"
 make main
