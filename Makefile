@@ -1,5 +1,5 @@
 clean:
-	if [ -f "$FILE" ]; then
+	if [ -f "main.exe" ]; then
 		rm -f main.exe
 	fi		
 main: main.c
