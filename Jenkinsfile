@@ -1,8 +1,7 @@
 properties([pipelineTriggers([githubPush()])])
 pipeline {
     agent none
-    stages {
-        
+    stages {      
         stage('Checkout SCM') {
             agent{
                 label 'build'
