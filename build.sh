@@ -2,7 +2,7 @@
 make clean
 #make -f "${WORKSPACE}/Makefile"
 make main
-cd "${WORKSPACE}"
+#cd "${WORKSPACE}"
 var="$(./main.exe)"
 echo $var
 if [[ $var =~ "FAILED" ]]; then
