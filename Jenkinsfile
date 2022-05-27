@@ -1,7 +1,7 @@
 properties([pipelineTriggers([githubPush()])])
 pipeline {
     agent {
-        label 'build || test'
+        label 'build,test'
     }
     stages {      
         stage('Check environment') {
