@@ -1,4 +1,5 @@
 #!/bin/bash
+cppcheck main.c
 make clean
 make main
 var="$(./main.exe)"
