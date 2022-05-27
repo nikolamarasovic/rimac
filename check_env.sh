@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Prepare Environment"
+echo "Check Environment"
 gcc=$(gcc --version | grep gcc | awk '{print $3}')
 if [[ -z $gcc ]]; then
     echo "gcc is not installed"
@@ -10,4 +10,4 @@ if [[ -z $git ]]; then
     echo "git is not installed"
     exit 1
 fi
-echo "Environment is ready"
+echo "gcc and git are installed,proceed with build"
