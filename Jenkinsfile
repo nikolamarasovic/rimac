@@ -1,6 +1,8 @@
 properties([pipelineTriggers([githubPush()])])
 pipeline {
-    agent none
+    agent {
+        label 'build || test'
+    }
     stages {      
         stage('Checkout SCM') {
             agent{
@@ -27,14 +29,14 @@ pipeline {
                     #!/bin/bash
                     bash "${WORKSPACE}/build.sh"
                 '''
+                archiveArtifacts artifacts: 'main.exe', fingerprint: true
             }
         }
         
         stage('Upload') {
-            agent{
-                label 'build'
-            }
+            
             steps{
+                copyArtifacts filter: 'main.exe', fingerprintArtifacts: true, projectName: env.JOB_NAME, selector: specific(env.BUILD_NUMBER)
                 withAWS(credentials:'rimac', region:'eu-central-1') {
                     s3Upload(file:"main.exe", bucket:"rimac-bucket")
                 }
