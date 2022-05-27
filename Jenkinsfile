@@ -6,7 +6,7 @@ pipeline {
     stages {      
         stage('Check environment') {
             agent{
-                label 'build && test'
+                label 'build'
             }
             steps {
                 checkout([
