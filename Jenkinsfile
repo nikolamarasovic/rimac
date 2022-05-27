@@ -4,7 +4,26 @@ pipeline {
         label 'build || test'
     }
     stages {      
-        stage('Checkout SCM') {
+        stage('Check environment') {
+            agent{
+                label 'build && test'
+            }
+            steps {
+                checkout([
+                 $class: 'GitSCM',
+                 branches: [[name: 'main']],
+                 userRemoteConfigs: [[
+                    url: 'https://github.com/nikolamarasovic/rimac.git',
+                    credentialsId: '7b378fd2-0fc6-470b-b980-e50dccb9b191',
+                 ]]
+                ])
+                sh '''
+                    #!/bin/bash
+                    bash "${WORKSPACE}/check_env.sh"
+                '''
+            }
+        }
+        stage('Build') {
             agent{
                 label 'build'
             }
@@ -17,14 +36,6 @@ pipeline {
                     credentialsId: '7b378fd2-0fc6-470b-b980-e50dccb9b191',
                  ]]
                 ])
-            }
-        }
-        
-        stage('Build') {
-            agent{
-                label 'build'
-            }
-            steps {
                 sh '''
                     #!/bin/bash
                     bash "${WORKSPACE}/build.sh"
