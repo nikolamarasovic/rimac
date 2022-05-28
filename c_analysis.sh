@@ -1,9 +1,9 @@
 #!/bin/bash
 echo "Execute static analysis"
 cd /home/ec2-user/
-declare var=$(./CPAchecker-2.1.1-unix/scripts/cpa.sh  -preprocess -predicateAnalysis "${WORKSPACE}/main.c")
-echo $var
-if [[ $var =~ "Error" ]]; then
+./CPAchecker-2.1.1-unix/scripts/cpa.sh  -preprocess -predicateAnalysis "${WORKSPACE}/main.c"
+var=$(cat output/CPALog.txt | grep Error)
+if [[ ! -z $var ]]; then
   echo "Static analysis failed, abort pipeline"
   exit 1
 fi
