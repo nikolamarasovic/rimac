@@ -1,5 +1,5 @@
 #!/bin/bash
-source "c_analysis.sh"
+. "c_analysis.sh"
 make clean
 make main
 var="$(./main.exe)"
